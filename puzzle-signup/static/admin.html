@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin: accounts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell single">
+    <section class="panel">
+      <h1>Admin: accounts</h1>
+
+      <p id="disabled" class="hint" hidden>Admin is not set up. Set ADMIN_PASSWORD, then restart the site (see the README).</p>
+
+      <form id="login" class="form" hidden>
+        <p class="hint">Log in with the admin username and password.</p>
+        <label>Admin username <input id="a-user" required></label>
+        <label>Admin password <input id="a-pass" type="password" required></label>
+        <button type="submit" class="primary">Log in</button>
+      </form>
+
+      <div id="list" hidden>
+        <div class="bar wide">
+          <input id="search" type="search" placeholder="Search username">
+          <span id="count" class="moves"></span>
+          <button type="button" id="logout" class="ghost">Log out</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Username</th><th>Created</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <p class="hint">Passwords are stored as hashes, so nobody, including the admin, can read them.</p>
+      </div>
+
+      <p id="msg" class="msg" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script src="admin.js"></script>
+</body>
+</html>

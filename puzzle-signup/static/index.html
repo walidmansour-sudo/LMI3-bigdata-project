@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solve to sign up</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="panel puzzle" aria-labelledby="puzzle-title">
+      <h1 id="puzzle-title">Solve the puzzle to unlock sign up</h1>
+      <p class="hint">Slide the tiles into order, 1 to 8, with the empty space last. Click a tile next to the gap to move it.</p>
+      <div id="board" class="board" role="grid" aria-label="Sliding puzzle"></div>
+      <div class="bar">
+        <span id="moves" class="moves">0 moves</span>
+        <button type="button" id="reset" class="ghost">New puzzle</button>
+      </div>
+    </section>
+
+    <section class="panel account" aria-labelledby="account-title">
+      <div class="tabs" role="tablist">
+        <button role="tab" id="tab-signup" aria-selected="true" class="tab active">Create account</button>
+        <button role="tab" id="tab-login" aria-selected="false" class="tab">Log in</button>
+      </div>
+
+      <form id="signup" class="form locked" autocomplete="off">
+        <h2 id="account-title">Create your account</h2>
+        <p id="lock-note" class="lock-note">Locked until the puzzle is solved.</p>
+        <label>Username
+          <input id="su-user" name="username" minlength="3" maxlength="30" required disabled>
+        </label>
+        <label>Password
+          <input id="su-pass" name="password" type="password" minlength="6" required disabled>
+        </label>
+        <button type="submit" id="su-btn" class="primary" disabled>Create account</button>
+      </form>
+
+      <form id="login" class="form" hidden>
+        <h2>Log in</h2>
+        <label>Username
+          <input id="li-user" name="username" required>
+        </label>
+        <label>Password
+          <input id="li-pass" name="password" type="password" required>
+        </label>
+        <button type="submit" class="primary">Log in</button>
+      </form>
+
+      <p id="msg" class="msg" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

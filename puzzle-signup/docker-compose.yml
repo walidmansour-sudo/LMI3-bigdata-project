@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"   # only reachable from this computer
+    environment:
+      PUZZLE_SHUFFLES: "8"       # difficulty: 6 very easy, 8 easy, 20 medium, 80 hard
+      ADMIN_USERNAME: "${ADMIN_USERNAME:-admin}"   # read from the .env file
+      ADMIN_PASSWORD: "${ADMIN_PASSWORD:-}"        # read from the .env file; empty = admin disabled
+    volumes:
+      - users-data:/data         # keeps users.db when the container is rebuilt
+      - ./exports:/exports       # users.xlsx appears in the "exports" folder next to this file
+    restart: unless-stopped
+
+volumes:
+  users-data:
